@@ -1,6 +1,7 @@
 from django.contrib import admin
-#from .models import Player
+
 # Register your models here.
+from .models import *
 
-
-# admin.site.register(Player)
+admin.site.register(Player)
+admin.site.register(Post)

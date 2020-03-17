@@ -12,21 +12,20 @@ from django.db import models
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=200)
-    complete = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
+	title = models.CharField(max_length=200)
+	created = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.title
 
 
-    def _str_(self):
-        return self.title
-
-
-
-#class Player(models.Model):
-#    PLAYER_CHOICES = (
-#        ('Adam'),('Adam'),
-#        ('Bartek'), ('Bartek'),
-#        ('Paweł'), ('Paweł'),
-#        ('Mateusz'), ('Mateusz'),
-#    )
-#    name = models.CharField(max_length = 100, choices = PLAYER_CHOICES)
+class Player(models.Model):
+    PLAYER_CHOICES = (
+        ('Adam', 'Adam'),
+        ('Bartek', 'Bartek'),
+        ('Paweł', 'Paweł'),
+        ('Mateusz', 'Mateusz'),
+     )
+    name = models.CharField(max_length=100 , choices = PLAYER_CHOICES)
+    def __str__(self):
+        return self.name
