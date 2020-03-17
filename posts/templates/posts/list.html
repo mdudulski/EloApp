@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Title</title>
+
+
+
 </head>
 <body>
 <h3>Match List</h3>
@@ -13,11 +17,74 @@
 </div>
 {% endfor %}
 
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+    {% for player in players %}
+        <li><a class="dropdown-item" href="#">{{player}}</a></li>
+
+    {% endfor %}
+  </div>
+</div>
+
+
 {% for post in posts %}
 <div>
 <p>{{post}}</p>
 </div>
 
 {% endfor %}
+
+
+
+
+<select id="selection1">
+    <option value="1">Hands</option>
+    <option value="2">Feet</option>
+    <option value="3">Body</option>
+</select>
+<select id="selection2">
+    <option value="1">Acne</option>
+    <option value="2">Dry Skin</option>
+    <option value="3">Redness</option>
+    <option value="4">Sensitivity</option>
+</select>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+
+<script>
+
+    jQuery( document ).ready(function( $ ) {
+    $( ".go-btn" ).click(function() {
+        // Grab text from select boxes
+        var firstSelection = $( "#selection1 option:selected" ).text();
+        var secondSelection = $( "#selection2 option:selected" ).text();
+
+        // Set URL, change as necessary
+        var url = "http://www.example.com/" + firstSelection + "/" + secondSelection;
+
+        // Redirect
+        window.location.href = url;
+    });
+});
+
+</script>
+
+
+
+<script>
+$(".dropdown-menu li a").click(function(){
+  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+});
+</script>
+
+
 </html>
