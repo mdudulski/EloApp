@@ -1,10 +1,11 @@
-#from django import forms
-#from django.forms import ModelForm
+from django import forms
+from django.forms import ModelForm
 
-#from . models import *
+from . models import *
+from . forms import *
 
-#class PostForm(forms.ModelForm):
+class PlayerForm(forms.ModelForm):
 
- #   class Meta:
-#        model = Post
- #       fields =
+    class Meta:
+       model = Player
+       fields = '__all__'
